@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Online website for around the us" />
+    <meta name="keywords" content="Practicum, image of U.S, profile" />
+    <meta name="author" content="Razan Ashhab" />
+    <title>Around the us</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link href="favicon.ico" rel="icon" />
+</head>
+
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img src="./images/logo.svg" alt="Logo" class="logo" />
+        </header>
+        <main class="content">
+            <section class="profile">
+                <img class="profile__image" src="./images/jacques-cousteau.jpg" alt="profile image" />
+                <div class="profile__info">
+                    <div class="profile__info-wrapper">
+                        <h1 class="profile__name">Jacques Cousteau</h1>
+                        <button type="button" class="profile__edit" aria-label="edit button">
+                <img
+                  class="profile__icon"
+                  src="./images/edit-profile.svg"
+                  alt="edit icon"
+                />
+              </button>
+                    </div>
+                    <p class="profile__description">Explorer</p>
+                </div>
+                <button type="button" class="profile__add-button" aria-label="add button">
+            <img src="./images/plus.svg" alt="image of plus icon" />
+          </button>
+            </section>
+            <section class="element">
+                <div class="element__card card">
+                    <img class="card__image" src="./images/yosemite-valley.jpg" alt="image of yosemite valley" />
+                    <div class="card__info">
+                        <h2 class="card__paragraph">Yosemite Valley</h2>
+                        <button type="button" class="card__button" aria-label="like button">
+                <img
+                  class="card__icon"
+                  src="./images/heart.svg"
+                  alt="image of heart"
+                />
+              </button>
+                    </div>
+                </div>
+                <div class="element__card card">
+                    <img class="card__image" src="./images/lake-louise.png" alt="image of lake louise" />
+                    <div class="card__info">
+                        <h2 class="card__paragraph">Lake Louise</h2>
+                        <button type="button" class="card__button" aria-label="like button">
+                <img
+                  class="card__icon"
+                  src="./images/heart.svg"
+                  alt="image of heart"
+                />
+              </button>
+                    </div>
+                </div>
+                <div class="element__card card">
+                    <img class="card__image" src="./images/bald-mountains.jpg" alt="image of bald mountains" />
+                    <div class="card__info">
+                        <h2 class="card__paragraph">Bald Mountains</h2>
+                        <button type="button" class="card__button" aria-label="like button">
+                <img
+                  class="card__icon"
+                  src="./images/heart.svg"
+                  alt="image of heart"
+                />
+              </button>
+                    </div>
+                </div>
+                <div class="element__card card">
+                    <img class="card__image" src="./images/latemar.jpg" alt="image of latemar" />
+                    <div class="card__info">
+                        <h2 class="card__paragraph">Latemar</h2>
+                        <button type="button" class="card__button" aria-label="like button">
+                <img
+                  class="card__icon"
+                  src="./images/heart.svg"
+                  alt="image of heart"
+                />
+              </button>
+                    </div>
+                </div>
+                <div class="element__card card">
+                    <img class="card__image" src="./images/vanoise-national-park.jpg" alt="image of vanoise national park" />
+                    <div class="card__info">
+                        <h2 class="card__paragraph">Vanoise National Park</h2>
+                        <button type="button" class="card__button" aria-label="like button">
+                <img
+                  class="card__icon"
+                  src="./images/heart.svg"
+                  alt="image of heart"
+                />
+              </button>
+                    </div>
+                </div>
+                <div class="element__card card">
+                    <img class="card__image" src="./images/lago-di-braies.jpg" alt="image of lago di braies" />
+                    <div class="card__info">
+                        <h2 class="card__paragraph">Lago di Braies</h2>
+                        <button type="button" class="card__button" aria-label="like button">
+                <img
+                  class="card__icon"
+                  src="./images/heart.svg"
+                  alt="image of heart"
+                />
+              </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">&copy; 2022 Around The U.S</p>
+        </footer>
+
+        <div class="popup popup__hidden">
+            <div class="popup__container">
+                <img class="popup__close-button" src="./images/Close Icon.svg" alt="image of close icon button" />
+                <h3 class="popup__title">Edit profile</h3>
+                <form class="form popup__form">
+                    <fieldset class="form__fieldset">
+                        <input type="text" class="form__input" id="name" name="name" placeholder="Name" />
+                        <input type="text" class="form__input" id="aboutme" name="aboutme" placeholder="About me" />
+                    </fieldset>
+                    <fieldset class="form__fieldset">
+                        <button type="submit" class="form__button">Save</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>
