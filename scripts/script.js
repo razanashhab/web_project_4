@@ -16,8 +16,6 @@ function showPopup() {
 
 function closePopup() {
     popup.classList.remove("popup_opened");
-    nameText.value = "";
-    aboutmeText.value = "";
 }
 
 function handleProfileFormSubmit(evt) {
