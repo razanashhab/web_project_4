@@ -9,6 +9,38 @@ const aboutmeText = popup.querySelector("#aboutme");
 const saveButton = popup.querySelector(".form__button");
 const form = popup.querySelector("form");
 
+DisplayCard();
+
+function DisplayCard() {
+    const element = document.querySelector(".element");
+    const template = document.querySelector("#template");
+    const images = [
+        "yosemite-valley.jpg",
+        "lake-louise.png",
+        "bald-mountains.jpg",
+        "latemar.jpg",
+        "vanoise-national-park.jpg",
+        "lago-di-braies.jpg",
+    ];
+    const imagenames = [
+        "Yosemite Valley",
+        "Lake Louise",
+        "Bald Mountains",
+        "Latemar",
+        "Vanoise National Park",
+        "Lago di Braies",
+    ];
+    for (let i = 0; i < images.length; i++) {
+        let clone = template.content.cloneNode(true);
+        let cardImage = clone.querySelector(".card__image");
+        let cardParagraph = clone.querySelector(".card__paragraph");
+        cardImage.setAttribute("src", `./images/${images[i]}`);
+        cardImage.setAttribute("alt", `image of ${imagenames[i]}`);
+        cardParagraph.textContent = imagenames[i];
+        element.appendChild(clone);
+    }
+}
+
 function showPopup() {
     nameText.value = profileName.textContent;
     aboutmeText.value = profileDescription.textContent;
