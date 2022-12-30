@@ -9,8 +9,8 @@ const aboutmeText = popup.querySelector("#aboutme");
 const saveButton = popup.querySelector(".form__button");
 
 function showPopup() {
-    nameText.value = profileName.innerHTML;
-    aboutmeText.value = profileDescription.innerHTML;
+    nameText.value = profileName.textContent;
+    aboutmeText.value = profileDescription.textContent;
     popup.classList.add("popup_opened");
 }
 
@@ -22,8 +22,8 @@ function closePopup() {
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    profileName.innerHTML = nameText.value;
-    profileDescription.innerHTML = aboutmeText.value;
+    profileName.textContent = nameText.value;
+    profileDescription.textContent = aboutmeText.value;
     closePopup();
 }
 
