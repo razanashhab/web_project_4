@@ -31,9 +31,9 @@ function DisplayCard() {
         "Lago di Braies",
     ];
     for (let i = 0; i < images.length; i++) {
-        let clone = template.content.cloneNode(true);
-        let cardImage = clone.querySelector(".card__image");
-        let cardParagraph = clone.querySelector(".card__paragraph");
+        const clone = template.content.cloneNode(true);
+        const cardImage = clone.querySelector(".card__image");
+        const cardParagraph = clone.querySelector(".card__paragraph");
         cardImage.setAttribute("src", `./images/${images[i]}`);
         cardImage.setAttribute("alt", `image of ${imagenames[i]}`);
         cardParagraph.textContent = imagenames[i];
