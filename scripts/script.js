@@ -7,6 +7,7 @@ const closeButton = popup.querySelector(".popup__close-button");
 const nameText = popup.querySelector("#name");
 const aboutmeText = popup.querySelector("#aboutme");
 const saveButton = popup.querySelector(".form__button");
+const form = popup.querySelector("form");
 
 function showPopup() {
     nameText.value = profileName.textContent;
@@ -27,4 +28,4 @@ function handleProfileFormSubmit(evt) {
 
 profileEditButton.addEventListener("click", showPopup);
 closeButton.addEventListener("click", closePopup);
-saveButton.addEventListener("click", handleProfileFormSubmit);
+form.addEventListener("submit", handleProfileFormSubmit);
