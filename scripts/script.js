@@ -11,11 +11,11 @@ let saveButton = popup.querySelector(".form__button");
 function showPopup() {
     nameText.value = profileName.innerHTML;
     aboutmeText.value = profileDescription.innerHTML;
-    popup.classList.remove("popup__hidden");
+    popup.classList.add("popup_opened");
 }
 
 function closePopup() {
-    popup.classList.add("popup__hidden");
+    popup.classList.remove("popup_opened");
     nameText.value = "";
     aboutmeText.value = "";
 }

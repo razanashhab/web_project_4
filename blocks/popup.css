@@ -6,10 +6,11 @@
     top: 0;
     right: 0;
     padding-top: 195px;
+    display: none;
 }
 
-.popup__hidden {
-    display: none;
+.popup_opened {
+    display: block;
 }
 
 .popup__container {
