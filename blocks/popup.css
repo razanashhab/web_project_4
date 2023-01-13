@@ -29,7 +29,7 @@
 
 .popup__close-button {
     position: absolute;
-    background-image: url("/images/Close Icon.svg");
+    background-image: url("./../images/Close Icon.svg");
     background-repeat: no-repeat;
     background-position: center;
     width: 40px;

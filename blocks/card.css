@@ -35,7 +35,7 @@
     width: 21px;
     height: 19px;
     background-color: #fff;
-    background: url("/images/heart.svg") center no-repeat;
+    background: url("./../images/heart.svg") center no-repeat;
 }
 
 .card__button:hover {
@@ -44,7 +44,7 @@
 
 .card__button_active {
     opacity: 1;
-    background: url(/images/heart-black.svg) center no-repeat;
+    background: url(./../images/heart-black.svg) center no-repeat;
 }
 
 .card__delete-button {
@@ -55,7 +55,7 @@
     right: 16.28px;
     width: 18px;
     height: 19.3px;
-    background: url("/images/bin.svg") center no-repeat;
+    background: url("./../images/bin.svg") center no-repeat;
 }
 
 .card__delete-button:hover {
