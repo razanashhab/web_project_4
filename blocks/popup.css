@@ -6,11 +6,14 @@
     top: 0;
     right: 0;
     padding-top: 195px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 .popup_opened {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .popup__container {
@@ -28,6 +31,7 @@
     position: absolute;
     background-image: url("/images/Close Icon.svg");
     background-repeat: no-repeat;
+    background-position: center;
     width: 40px;
     height: 40px;
     top: -48px;
@@ -48,6 +52,15 @@
     line-height: 1.21;
 }
 
+.popup___image {
+    max-width: 75vw;
+    height: 75vh;
+}
+
+.popup__image-description {
+    color: #fff;
+}
+
 @media screen and (min-width: 320px) and (max-width: 627px) {
     .popup {
         padding-top: 123px;
@@ -66,5 +79,9 @@
     .popup__title {
         font-size: 18px;
         padding: 25px 22px 76px 22px;
+    }
+    .popup___image {
+        width: 240px;
+        height: 299px;
     }
 }

@@ -1,4 +1,5 @@
 .card {
+    position: relative;
     background-color: #fff;
     width: 100%;
     border-radius: 10px;
@@ -31,9 +32,32 @@
 .card__button {
     padding: 0;
     border: 0;
+    width: 21px;
+    height: 19px;
     background-color: #fff;
+    background: url("/images/heart.svg") center no-repeat;
 }
 
 .card__button:hover {
+    opacity: 0.5;
+}
+
+.card__button_active {
+    opacity: 1;
+    background: url(/images/heart-black.svg) center no-repeat;
+}
+
+.card__delete-button {
+    position: absolute;
+    padding: 0;
+    border: 0;
+    top: 23.76px;
+    right: 16.28px;
+    width: 18px;
+    height: 19.3px;
+    background: url("/images/bin.svg") center no-repeat;
+}
+
+.card__delete-button:hover {
     opacity: 0.5;
 }
