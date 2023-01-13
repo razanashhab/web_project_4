@@ -67,7 +67,7 @@ function addCard(cardLink, cardName) {
             evt.target.closest(".element__card").remove();
         });
     cardImage.addEventListener("click", function(evt) {
-        picturePopup.classList.toggle("popup_opened");
+        openPicturePopup();
         popupImage.setAttribute("src", `${evt.target.getAttribute("src")}`);
         popupImage.setAttribute(
             "alt",
@@ -115,7 +115,7 @@ function handleCreateCardFormSubmit(evt) {
     closePopup(createCardPopup);
 }
 
-function createPicture() {
+function openPicturePopup() {
     openPopup(picturePopup);
 }
 
