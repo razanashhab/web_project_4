@@ -91,7 +91,6 @@ function showEditProfile() {
     nameText.value = profileName.textContent;
     aboutmeText.value = profileDescription.textContent;
     openPopup(editProfile);
-    //editProfile.classList.add("popup_opened");
 }
 
 function handleProfileFormSubmit(evt) {
