@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Online website for around the us" />
@@ -10,35 +9,47 @@
     <title>Around the us</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <link href="favicon.ico" rel="icon" />
-</head>
+  </head>
 
-<body class="body">
+  <body class="body">
     <div class="page">
-        <header class="header">
-            <img src="./images/logo.svg" alt="Logo" class="logo" />
-        </header>
-        <main class="content">
-            <section class="profile">
-                <img class="profile__image" src="./images/jacques-cousteau.jpg" alt="profile image" />
-                <div class="profile__info">
-                    <div class="profile__info-wrapper">
-                        <h1 class="profile__name">Jacques Cousteau</h1>
-                        <button type="button" class="profile__edit" aria-label="edit button">
+      <header class="header">
+        <img src="./images/logo.svg" alt="Logo" class="logo" />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img
+            class="profile__image"
+            src="./images/jacques-cousteau.jpg"
+            alt="profile image"
+          />
+          <div class="profile__info">
+            <div class="profile__info-wrapper">
+              <h1 class="profile__name">Jacques Cousteau</h1>
+              <button
+                type="button"
+                class="profile__edit"
+                aria-label="edit button"
+              >
                 <img
                   class="profile__icon"
                   src="./images/edit-profile.svg"
                   alt="edit icon"
                 />
               </button>
-                    </div>
-                    <p class="profile__description">Explorer</p>
-                </div>
-                <button type="button" class="profile__add-button" aria-label="add button">
+            </div>
+            <p class="profile__description">Explorer</p>
+          </div>
+          <button
+            type="button"
+            class="profile__add-button"
+            aria-label="add button"
+          >
             <img src="./images/plus.svg" alt="image of plus icon" />
           </button>
-            </section>
-            <section class="element">
-                <template id="template">
+        </section>
+        <section class="element">
+          <template id="template">
             <div class="element__card card">
               <button
                 type="button"
@@ -60,50 +71,100 @@
               </div>
             </div>
           </template>
-            </section>
-        </main>
-        <footer class="footer">
-            <p class="footer__copyright">&copy; 2022 Around The U.S</p>
-        </footer>
-        <div class="popup" id="editProfile">
-            <div class="popup__container">
-                <button type="button" class="popup__close-button" id="closeEditProfile"></button>
-                <h3 class="popup__title">Edit profile</h3>
-                <form class="form popup__form" id="editProfileForm">
-                    <fieldset class="form__fieldset">
-                        <input type="text" class="form__input" id="name" name="name" placeholder="Name" />
-                        <input type="text" class="form__input" id="aboutme" name="aboutme" placeholder="About me" />
-                    </fieldset>
-                    <fieldset class="form__fieldset">
-                        <button type="submit" class="form__button">Save</button>
-                    </fieldset>
-                </form>
-            </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Around The U.S</p>
+      </footer>
+      <div class="popup" id="editProfile">
+        <div class="popup__container">
+          <button
+            type="button"
+            class="popup__close-button"
+            id="closeEditProfile"
+          ></button>
+          <h3 class="popup__title">Edit profile</h3>
+          <form class="form popup__form" id="editProfileForm">
+            <fieldset class="form__fieldset">
+              <input
+                type="text"
+                class="form__input form__input_placement"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="name-input-error form__input-error"></span>
+              <input
+                type="text"
+                class="form__input form__input_placement"
+                id="aboutme"
+                name="aboutme"
+                placeholder="About me"
+                required
+                minlength="2"
+                maxlength="400"
+              />
+              <span class="aboutme-input-error form__input-error"></span>
+            </fieldset>
+            <fieldset class="form__fieldset">
+              <button type="submit" class="form__submit">Save</button>
+            </fieldset>
+          </form>
         </div>
-        <div class="popup" id="createCardPopup">
-            <div class="popup__container">
-                <button type="button" class="popup__close-button" id="closeCreateCard"></button>
-                <h3 class="popup__title">New Place</h3>
-                <form class="form popup__form" id="createCardForm">
-                    <fieldset class="form__fieldset">
-                        <input type="text" class="form__input" id="title" name="title" placeholder="Title" />
-                        <input type="text" class="form__input" id="imagelink" name="imagelink" placeholder="Image link" />
-                    </fieldset>
-                    <fieldset class="form__fieldset">
-                        <button type="submit" class="form__button">Create</button>
-                    </fieldset>
-                </form>
-            </div>
+      </div>
+      <div class="popup" id="createCardPopup">
+        <div class="popup__container">
+          <button
+            type="button"
+            class="popup__close-button"
+            id="closeCreateCard"
+          ></button>
+          <h3 class="popup__title">New Place</h3>
+          <form class="form popup__form" id="createCardForm">
+            <fieldset class="form__fieldset">
+              <input
+                type="text"
+                class="form__input form__input_placement"
+                id="title"
+                name="title"
+                placeholder="Title"
+                required
+                minlength="1"
+                maxlength="30"
+              />
+              <span class="title-input-error form__input-error"></span>
+              <input
+                type="url"
+                class="form__input form__input_placement"
+                id="imagelink"
+                name="imagelink"
+                placeholder="Image link"
+                required
+              />
+              <span class="imagelink-input-error form__input-error"></span>
+            </fieldset>
+            <fieldset class="form__fieldset">
+              <button type="submit" class="form__submit">Create</button>
+            </fieldset>
+          </form>
         </div>
-        <div class="popup" id="picturePopup">
-            <div class="popup__wrapper">
-                <button type="button" class="popup__close-button" id="closePicturePopup"></button>
-                <img class="popup__image" src="./images/plus.svg" alt="img" />
-                <p class="popup__image-description"></p>
-            </div>
+      </div>
+      <div class="popup" id="picturePopup">
+        <div class="popup__wrapper">
+          <button
+            type="button"
+            class="popup__close-button"
+            id="closePicturePopup"
+          ></button>
+          <img class="popup__image" src="./images/plus.svg" alt="img" />
+          <p class="popup__image-description"></p>
         </div>
+      </div>
     </div>
-    <script src="./scripts/script.js"></script>
-</body>
-
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
+  </body>
 </html>
