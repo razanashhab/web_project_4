@@ -2,7 +2,7 @@ const profile = document.querySelector(".profile");
 const profileEditButton = profile.querySelector(".profile__edit");
 const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__description");
-const editProfile = document.querySelector("#editProfile");
+const editProfilePopup = document.querySelector("#editProfile");
 const closeEditProfileBtn = editProfile.querySelector("#closeEditProfile");
 const nameText = editProfile.querySelector("#name");
 const aboutmeText = editProfile.querySelector("#aboutme");
@@ -55,25 +55,21 @@ function addCard(cardLink, cardName) {
   const clone = template.content.cloneNode(true);
   const cardImage = clone.querySelector(".card__image");
   const cardParagraph = clone.querySelector(".card__paragraph");
+  const cardButton = clone.querySelector(".card__button");
+  const cardDeleteButton = clone.querySelector(".card__delete-button");
+  const cardElemment = clone.querySelector(".element__card");
   cardImage.setAttribute("src", `${cardLink}`);
   cardImage.setAttribute("alt", `image of ${cardName}`);
-  clone
-    .querySelector(".card__button")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("card__button_active");
-    });
-  clone
-    .querySelector(".card__delete-button")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".element__card").remove();
-    });
+  cardButton.addEventListener("click", function (evt) {
+    evt.target.classList.toggle("card__button_active");
+  });
+  cardDeleteButton.addEventListener("click", function (evt) {
+    cardElemment.remove();
+  });
   cardImage.addEventListener("click", function (evt) {
     openPicturePopup();
-    popupImage.setAttribute("src", `${evt.target.getAttribute("src")}`);
-    popupImage.setAttribute(
-      "alt",
-      `image of ${evt.target.getAttribute("alt")}`
-    );
+    popupImage.setAttribute("src", evt.target.getAttribute("src"));
+    popupImage.setAttribute("alt", `image of ${cardName}`);
     const popupImageDescription = picturePopup.querySelector(
       ".popup__image-description"
     );
@@ -88,9 +84,13 @@ initialCards.forEach((card) => {
   element.appendChild(clone);
 });
 
-function showEditProfile() {
+function fillProfileForm() {
   nameText.value = profileName.textContent;
   aboutmeText.value = profileDescription.textContent;
+}
+
+function showEditProfile() {
+  fillProfileForm();
   openPopup(editProfile);
 }
 
@@ -114,18 +114,40 @@ function handleCreateCardFormSubmit(evt) {
   element.prepend(clone);
 
   closePopup(createCardPopup);
+  toggleButtonState(
+    Array.from(createCardPopup.querySelectorAll(".form__input")),
+    createCardPopup.querySelector(".form__submit"),
+    "button_inactive"
+  );
 }
 
 function openPicturePopup() {
   openPopup(picturePopup);
 }
 
+function closePopupOnRemoteClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+}
+
+function closeModalByEscape(evt) {
+  if (evt.key == "Escape") {
+    const openedModal = document.querySelector(".popup_open");
+    closePopup(openedModal);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  popup.addEventListener("mousedown", closePopupOnRemoteClick);
+  document.addEventListener("mousedown", closeModalByEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener("mousedown", closePopupOnRemoteClick);
+  document.removeEventListener("mousedown", closeModalByEscape);
 }
 
 closeButtons.forEach((button) => {
@@ -139,13 +161,3 @@ profileEditButton.addEventListener("click", showEditProfile);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 cardCreationButton.addEventListener("click", createCard);
 createCardForm.addEventListener("submit", handleCreateCardFormSubmit);
-popupList.forEach((popupelement) => {
-  popupelement.addEventListener("click", (evt) => {
-    if (evt.target == popupelement) {
-      closePopup(popupelement);
-    }
-  });
-  window.addEventListener("keydown", (evt) => {
-    if (evt.key == "Escape") closePopup(popupelement);
-  });
-});

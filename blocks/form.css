@@ -23,9 +23,6 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
-}
-
-.form__input_placement {
   margin-bottom: 29.74px;
 }
 
@@ -44,11 +41,13 @@
 }
 
 .form__submit:hover {
+  cursor: pointer;
   opacity: 0.8;
 }
 
 .form__input_type_error {
   border-bottom-color: red;
+  margin-bottom: 0;
 }
 
 .form__input-error {
