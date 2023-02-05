@@ -57,14 +57,14 @@ function addCard(cardLink, cardName) {
   const cardParagraph = clone.querySelector(".card__paragraph");
   const cardButton = clone.querySelector(".card__button");
   const cardDeleteButton = clone.querySelector(".card__delete-button");
-  const cardElemment = clone.querySelector(".element__card");
+  const cardElement = clone.querySelector(".element__card");
   cardImage.setAttribute("src", `${cardLink}`);
   cardImage.setAttribute("alt", `image of ${cardName}`);
   cardButton.addEventListener("click", function (evt) {
     evt.target.classList.toggle("card__button_active");
   });
   cardDeleteButton.addEventListener("click", function (evt) {
-    cardElemment.remove();
+    cardElement.remove();
   });
   cardImage.addEventListener("click", function (evt) {
     openPicturePopup();
@@ -133,7 +133,7 @@ function closePopupOnRemoteClick(evt) {
 
 function closeModalByEscape(evt) {
   if (evt.key == "Escape") {
-    const openedModal = document.querySelector(".popup_open");
+    const openedModal = document.querySelector(".popup_opened");
     closePopup(openedModal);
   }
 }
@@ -141,13 +141,13 @@ function closeModalByEscape(evt) {
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   popup.addEventListener("mousedown", closePopupOnRemoteClick);
-  document.addEventListener("mousedown", closeModalByEscape);
+  document.addEventListener("keydown", closeModalByEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener("mousedown", closePopupOnRemoteClick);
-  document.removeEventListener("mousedown", closeModalByEscape);
+  document.removeEventListener("keydown", closeModalByEscape);
 }
 
 closeButtons.forEach((button) => {
