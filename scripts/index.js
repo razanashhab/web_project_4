@@ -44,7 +44,7 @@ const initialCards = [
   },
 ];
 
-formSelectors.forEach((form) => {
+function addFormValidation(form) {
   const formValidator = new FormValidator(
     {
       inputSelector: ".form__input",
@@ -56,6 +56,9 @@ formSelectors.forEach((form) => {
     form
   );
   formValidator.enableValidation();
+}
+formSelectors.forEach((form) => {
+  addFormValidation(form);
 });
 
 initialCards.forEach((card) => {
@@ -64,8 +67,8 @@ initialCards.forEach((card) => {
     { imgLink: card.link, title: card.name },
     "#template"
   );
-  const cardObject = cardObj.generateCard();
-  element.appendChild(cardObject);
+  const newCard = cardObj.generateCard();
+  element.appendChild(newCard);
 });
 
 function fillProfileForm() {
@@ -95,15 +98,12 @@ function handleCreateCardFormSubmit(evt) {
     { imgLink: imagelink.value, title: title.value },
     "#template"
   );
-  const xx = cardObj.generateCard();
-  element.prepend(xx);
+  const newCard = cardObj.generateCard();
+  element.prepend(newCard);
 
   closePopup(createCardPopup);
-  toggleButtonState(
-    Array.from(createCardPopup.querySelectorAll(".form__input")),
-    createCardPopup.querySelector(".form__submit"),
-    "button_inactive"
-  );
+  createCardForm.reset();
+  addFormValidation(createCardForm);
 }
 
 closeButtons.forEach((button) => {
