@@ -16,7 +16,7 @@ const imagelink = createCardPopup.querySelector("#imagelink");
 const createCardForm = createCardPopup.querySelector("#createCardForm");
 const closeButtons = document.querySelectorAll(".popup__close-button");
 const element = document.querySelector(".element");
-const formSelectors = document.querySelectorAll(".form");
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -43,32 +43,38 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
+const formValidators = {};
 
-function addFormValidation(form) {
-  const formValidator = new FormValidator(
-    {
-      inputSelector: ".form__input",
-      submitButtonSelector: ".form__submit",
-      inactiveButtonClass: "button_inactive",
-      inputErrorClass: "form__input_type_error",
-      errorClass: "form__input-error_active",
-    },
-    form
-  );
-  formValidator.enableValidation();
-}
-formSelectors.forEach((form) => {
-  addFormValidation(form);
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(formElement, config);
+    // here you get the name of the form
+    const formName = formElement.getAttribute("name");
+
+    // here you store a validator by the `name` of the form
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation({
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit",
+  inactiveButtonClass: "button_inactive",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
 });
 
-initialCards.forEach((card) => {
-  //const clone = addCard(card.link, card.name);
-  const cardObj = new Card(
-    { imgLink: card.link, title: card.name },
-    "#template"
-  );
+function createCard(link, name) {
+  const cardObj = new Card({ imgLink: link, title: name }, "#template");
   const newCard = cardObj.generateCard();
-  element.appendChild(newCard);
+  return newCard;
+}
+
+initialCards.forEach((card) => {
+  element.appendChild(createCard(card.link, card.name));
 });
 
 function fillProfileForm() {
@@ -88,22 +94,17 @@ function handleProfileFormSubmit(evt) {
   closePopup(editProfile);
 }
 
-function createCard() {
+function openCreateCardForm() {
   openPopup(createCardPopup);
 }
 
 function handleCreateCardFormSubmit(evt) {
   evt.preventDefault();
-  const cardObj = new Card(
-    { imgLink: imagelink.value, title: title.value },
-    "#template"
-  );
-  const newCard = cardObj.generateCard();
-  element.prepend(newCard);
+  element.prepend(createCard(imagelink.value, title.value));
 
   closePopup(createCardPopup);
   createCardForm.reset();
-  addFormValidation(createCardForm);
+  formValidators[createCardForm.getAttribute("name")].resetValidation();
 }
 
 closeButtons.forEach((button) => {
@@ -115,5 +116,5 @@ closeButtons.forEach((button) => {
 
 profileEditButton.addEventListener("click", showEditProfile);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
-cardCreationButton.addEventListener("click", createCard);
+cardCreationButton.addEventListener("click", openCreateCardForm);
 createCardForm.addEventListener("submit", handleCreateCardFormSubmit);

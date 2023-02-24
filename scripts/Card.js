@@ -1,4 +1,6 @@
 import { openPopup, closePopup } from "./utils.js";
+const picturePopup = document.querySelector("#picturePopup");
+const popupImage = picturePopup.querySelector(".popup__image");
 export class Card {
   constructor(data, selector) {
     this._title = data.title;
@@ -15,17 +17,11 @@ export class Card {
   }
 
   _setCardInfo() {
-    this._element
-      .querySelector(".card__image")
-      .setAttribute("src", `${this._imgLink}`);
-    this._element
-      .querySelector(".card__image")
-      .setAttribute("alt", `image of ${this._title}`);
-    this._element.querySelector(".card__paragraph").textContent = this._title;
+    this._cardImage.setAttribute("src", `${this._imgLink}`);
+    this._cardImage.setAttribute("alt", `image of ${this._title}`);
+    this._cardParagraph.textContent = this._title;
   }
   _openPicturePopup(evt) {
-    const picturePopup = document.querySelector("#picturePopup");
-    const popupImage = picturePopup.querySelector(".popup__image");
     popupImage.setAttribute("src", evt.target.getAttribute("src"));
     popupImage.setAttribute(
       "alt",
@@ -43,22 +39,22 @@ export class Card {
   }
 
   _deleteCard(evt) {
-    evt.target.parentNode.remove();
+    evt.target.closest(".card").remove();
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".card__button")
-      .addEventListener("click", this._toggleLikeButton);
-    this._element
-      .querySelector(".card__delete-button")
-      .addEventListener("click", this._deleteCard);
-    this._element
-      .querySelector(".card__image")
-      .addEventListener("click", this._openPicturePopup);
+    this._cardLikeButton.addEventListener("click", this._toggleLikeButton);
+    this._cardDeleteButton.addEventListener("click", this._deleteCard);
+    this._cardImage.addEventListener("click", this._openPicturePopup);
   }
   generateCard() {
     this._element = this._getTemplate();
+    this._cardLikeButton = this._element.querySelector(".card__button");
+    this._cardDeleteButton = this._element.querySelector(
+      ".card__delete-button"
+    );
+    this._cardImage = this._element.querySelector(".card__image");
+    this._cardParagraph = this._element.querySelector(".card__paragraph");
     //set values for the card title and image link
     this._setCardInfo();
     //set event listener
