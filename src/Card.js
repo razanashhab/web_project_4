@@ -1,6 +1,5 @@
-import { openPopup, closePopup } from "./utils.js";
-const picturePopup = document.querySelector("#picturePopup");
-const popupImage = picturePopup.querySelector(".popup__image");
+import { PopupWithImage } from "./PopupWithImage.js";
+
 export class Card {
   constructor(data, selector) {
     this._title = data.title;
@@ -22,16 +21,12 @@ export class Card {
     this._cardParagraph.textContent = this._title;
   }
   _openPicturePopup(evt) {
-    popupImage.setAttribute("src", evt.target.getAttribute("src"));
-    popupImage.setAttribute(
-      "alt",
-      `image of ${evt.target.getAttribute("alt")}`
-    );
-    const popupImageDescription = picturePopup.querySelector(
-      ".popup__image-description"
-    );
-    popupImageDescription.textContent = evt.target.getAttribute("alt");
-    openPopup(picturePopup);
+    const popupWithImage = new PopupWithImage("#picturePopup", {
+      imgSrc: evt.target.getAttribute("src"),
+      imgAlt: evt.target.getAttribute("alt"),
+    });
+    popupWithImage.setEventListeners();
+    popupWithImage.open();
   }
 
   _toggleLikeButton(evt) {

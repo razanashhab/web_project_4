@@ -7,25 +7,24 @@
     <meta name="keywords" content="Practicum, image of U.S, profile" />
     <meta name="author" content="Razan Ashhab" />
     <title>Around the us</title>
-    <link rel="stylesheet" href="./pages/index.css" />
-    <link href="favicon.ico" rel="icon" />
+    <link href="<%= require('./images/logo.svg')%>" rel="icon" />
   </head>
 
   <body class="body">
     <div class="page">
       <header class="header">
-        <img src="./images/logo.svg" alt="Logo" class="logo" />
+        <img src="<%= require('./images/logo.svg')%>" alt="Logo" class="logo" />
       </header>
       <main class="content">
         <section class="profile">
           <img
             class="profile__image"
-            src="./images/jacques-cousteau.jpg"
+            src="<%= require('./images/jacques-cousteau.jpg')%>"
             alt="profile image"
           />
           <div class="profile__info">
             <div class="profile__info-wrapper">
-              <h1 class="profile__name">Jacques Cousteau</h1>
+              <h1 class="profile__name"></h1>
               <button
                 type="button"
                 class="profile__edit"
@@ -33,19 +32,22 @@
               >
                 <img
                   class="profile__icon"
-                  src="./images/edit-profile.svg"
+                  src="<%= require('./images/edit-profile.svg')%>"
                   alt="edit icon"
                 />
               </button>
             </div>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button
             type="button"
             class="profile__add-button"
             aria-label="add button"
           >
-            <img src="./images/plus.svg" alt="image of plus icon" />
+            <img
+              src="<%= require('./images/plus.svg')%>"
+              alt="image of plus icon"
+            />
           </button>
         </section>
         <section class="element">
@@ -58,7 +60,7 @@
               ></button>
               <img
                 class="card__image"
-                src="./images/bald-mountains.jpg"
+                src="<%= require('./images/bald-mountains.jpg')%>"
                 alt="bald mountains"
               />
               <div class="card__info">
@@ -78,11 +80,7 @@
       </footer>
       <div class="popup" id="editProfile">
         <div class="popup__container">
-          <button
-            type="button"
-            class="popup__close-button"
-            id="closeEditProfile"
-          ></button>
+          <button type="button" class="popup__close-button"></button>
           <h3 class="popup__title">Edit profile</h3>
           <form
             class="form popup__form"
@@ -121,11 +119,7 @@
       </div>
       <div class="popup" id="createCardPopup">
         <div class="popup__container">
-          <button
-            type="button"
-            class="popup__close-button"
-            id="closeCreateCard"
-          ></button>
+          <button type="button" class="popup__close-button"></button>
           <h3 class="popup__title">New Place</h3>
           <form
             class="form popup__form"
@@ -167,11 +161,14 @@
             class="popup__close-button"
             id="closePicturePopup"
           ></button>
-          <img class="popup__image" src="./images/plus.svg" alt="img" />
+          <img
+            class="popup__image"
+            src="<%= require('./images/plus.svg')%>"
+            alt="img"
+          />
           <p class="popup__image-description"></p>
         </div>
       </div>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
