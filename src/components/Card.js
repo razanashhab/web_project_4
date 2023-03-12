@@ -1,10 +1,9 @@
-import { PopupWithImage } from "./PopupWithImage.js";
-
 export class Card {
-  constructor(data, selector) {
+  constructor(data, selector, handler) {
     this._title = data.title;
     this._imgLink = data.imgLink;
     this._cardSelector = selector;
+    this._handler = handler;
   }
 
   _getTemplate() {
@@ -20,14 +19,6 @@ export class Card {
     this._cardImage.setAttribute("alt", `image of ${this._title}`);
     this._cardParagraph.textContent = this._title;
   }
-  _openPicturePopup(evt) {
-    const popupWithImage = new PopupWithImage("#picturePopup", {
-      imgSrc: evt.target.getAttribute("src"),
-      imgAlt: evt.target.getAttribute("alt"),
-    });
-    popupWithImage.setEventListeners();
-    popupWithImage.open();
-  }
 
   _toggleLikeButton(evt) {
     evt.target.classList.toggle("card__button_active");
@@ -40,7 +31,12 @@ export class Card {
   _setEventListeners() {
     this._cardLikeButton.addEventListener("click", this._toggleLikeButton);
     this._cardDeleteButton.addEventListener("click", this._deleteCard);
-    this._cardImage.addEventListener("click", this._openPicturePopup);
+    this._cardImage.addEventListener("click", (evt) => {
+      this._handler({
+        imgSrc: evt.target.getAttribute("src"),
+        imgAlt: evt.target.getAttribute("alt"),
+      });
+    });
   }
   generateCard() {
     this._element = this._getTemplate();
