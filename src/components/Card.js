@@ -41,18 +41,18 @@ export class Card {
         this._cardParagraph.textContent = this._title;
         this._cardLikesLabel.textContent = this._likes.length;
         if (this._getLikeActiveStatus()) {
-            this._activateLikeButton();
+            this.activateLikeButton();
         }
     }
-    _updateLikesCounter(likes) {
+    updateLikesCounter(likes) {
         this._likes = likes;
         this._cardLikesLabel.textContent = this._likes.length;
     }
 
-    _activateLikeButton() {
+    activateLikeButton() {
         this._cardLikeButton.classList.add("card__button_active");
     }
-    _inactivateLikeButton() {
+    inactivateLikeButton() {
         this._cardLikeButton.classList.remove("card__button_active");
     }
 

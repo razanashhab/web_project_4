@@ -17,15 +17,13 @@ export class PopupWithConfirmation extends Popup {
         super.setEventListeners();
         this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
-            this._renderLoading(true);
+            this.renderLoading(true);
             this._submitter(this._card, this._cardId);
-            this.close();
-            this._renderLoading(false);
         });
     }
-    _renderLoading(isLoading) {
+    renderLoading(isLoading) {
         if (isLoading) {
-            this._submitButton.textContent = "Saving...";
+            this._submitButton.textContent = "Deleting...";
         } else {
             this._submitButton.textContent = this._submitButtonTextContent;
         }
